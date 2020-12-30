@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>async-tag</title>
+  <script src="../min.js"></script>
+  <script>
+  const asyncRaw = asyncTag(String.raw);
+    // async invoke
+    asyncRaw`a${[
+      1,
+      [2, [Promise.resolve(3)], 4],
+      [5, 6]
+    ]}${Promise.resolve(7)}c`
+      .then(result => {
+        console.assert(result === 'a1,2,3,4,5,67c');
+        console.log(result);
+      });
+
+    // direct invoke
+    asyncRaw`a${'b'}c`
+    .then(result => {
+      console.assert(result === 'abc');
+      console.log(result);
+    });
+  </script>
+</head>
+<body></body>
+</html>

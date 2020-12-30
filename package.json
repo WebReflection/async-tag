@@ -1,0 +1,53 @@
+{
+  "name": "async-tag",
+  "version": "0.0.1",
+  "description": "Resolves template literals tag values before applying a generic tag",
+  "main": "./cjs/index.js",
+  "scripts": {
+    "build": "npm run cjs && npm run rollup:babel && npm run min && npm run test",
+    "cjs": "ascjs --no-default esm cjs",
+    "rollup:babel": "rollup --config rollup/babel.config.js && sed -i.bck 's/^var /self./; s/Object.define[^;]*;//; s/exports.default =/return/' index.js && rm -rf index.js.bck",
+    "min": "terser index.js --comments='/^!/' -c -m -o min.js",
+    "coveralls": "nyc report --reporter=text-lcov | coveralls",
+    "test": "nyc node test/index.js"
+  },
+  "keywords": [
+    "async",
+    "template",
+    "literal",
+    "tag",
+    "values"
+  ],
+  "author": "Andrea Giammarchi",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "@rollup/plugin-babel": "^5.2.2",
+    "@rollup/plugin-node-resolve": "^11.0.1",
+    "ascjs": "^4.0.3",
+    "coveralls": "^3.1.0",
+    "nyc": "^15.1.0",
+    "rollup": "^2.35.1",
+    "rollup-plugin-terser": "^7.0.2",
+    "terser": "^5.5.1"
+  },
+  "module": "./esm/index.js",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./esm/index.js",
+      "default": "./cjs/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "unpkg": "min.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WebReflection/async-tag.git"
+  },
+  "bugs": {
+    "url": "https://github.com/WebReflection/async-tag/issues"
+  },
+  "homepage": "https://github.com/WebReflection/async-tag#readme"
+}

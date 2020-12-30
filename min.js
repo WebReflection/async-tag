@@ -1,0 +1,1 @@
+self.asyncTag=function(n){"use strict";var r=Array.isArray,t=function n(t,u){for(var i=[],e=t.length;u<e;u++)i.push(r(t[u])?n(t[u],0):t[u]);return Promise.all(i)};return function(n){function r(r,t){return n.apply(this,[r].concat(t))}return function(n){return t(arguments,1).then(r.bind(this,n))}}}();
