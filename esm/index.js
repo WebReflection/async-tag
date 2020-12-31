@@ -7,6 +7,13 @@ const sync = (values, i) => {
   return Promise.all(resolved);
 };
 
+/**
+ * Returns a template literal tag abe to resolve, recursively, any possible
+ * asynchronous interpolation.
+ * @param {function} tag a template literal tag.
+ * @returns {function} a template literal tag that resolves interpolations
+ *                     before passing these to the initial template literal.
+ */
 export default tag => {
   function invoke(template, values) {
     return tag.apply(this, [template].concat(values));

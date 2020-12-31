@@ -12,6 +12,14 @@ self.asyncTag = (function () {
 
     return Promise.all(resolved);
   };
+  /**
+   * Returns a template literal tag abe to resolve, recursively, any possible
+   * asynchronous interpolation.
+   * @param {function} tag a template literal tag.
+   * @returns {function} a template literal tag that resolves interpolations
+   *                     before passing these to the initial template literal.
+   */
+
 
   var index = (function (tag) {
     function invoke(template, values) {
