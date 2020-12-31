@@ -1,6 +1,6 @@
 {
   "name": "async-tag",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description": "Resolves template literals tag values before applying a generic tag",
   "main": "./cjs/index.js",
   "scripts": {
