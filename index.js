@@ -1,4 +1,4 @@
-self.asyncTag = (function (exports) {
+self.asyncTag = (function () {
   'use strict';
 
   var isArray = Array.isArray;
@@ -27,6 +27,6 @@ self.asyncTag = (function (exports) {
 
   
 
-  return exports;
+  
 
-}({}));
+}());
