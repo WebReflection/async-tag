@@ -6,7 +6,7 @@
   "scripts": {
     "build": "npm run cjs && npm run rollup:babel && npm run min && npm run test",
     "cjs": "ascjs --no-default esm cjs",
-    "rollup:babel": "rollup --config rollup/babel.config.js && sed -i.bck 's/^var /self./; s/Object.define[^;]*;//; s/return exports;//; s/exports.default =/return/; s/exports//; s/{}//' index.js && rm -rf index.js.bck",
+    "rollup:babel": "rollup --config rollup/babel.config.js && sed -i.bck 's/^var /self./; s/return exports;//; s/exports.default =/return/; s/exports//; s/{}//' index.js && rm -rf index.js.bck",
     "min": "terser index.js --comments='/^!/' -c -m -o min.js",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "test": "nyc node test/index.js"
